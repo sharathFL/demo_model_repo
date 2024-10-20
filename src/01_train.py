@@ -16,7 +16,7 @@ with open(args.config, 'r') as f:
 
 # Instantiate and train the model
 model = DummyModelV2()
-
+print("Using: ",model.get_version())
 # Dummy training step (replace with actual training)
 dummy_input = torch.randn(10, 10)  # Placeholder input data
 dummy_output = model(dummy_input)   # Forward pass
