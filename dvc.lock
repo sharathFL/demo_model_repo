@@ -27,8 +27,8 @@ stages:
       nfiles: 0
     - path: src/01_train.py
       hash: md5
-      md5: 4c49a16a96296781c57effb996a975a0
-      size: 1431
+      md5: e0e68e3bf1572f6ddd715c0434d3cb10
+      size: 1646
     - path: src/config.yaml
       hash: md5
       md5: b3112ce2059d5384f8c4aab21bdd76f4
@@ -40,8 +40,8 @@ stages:
     outs:
     - path: models/model_v2.pt
       hash: md5
-      md5: ef3be612e879e97d06819a538b8d8a5e
-      size: 1566
+      md5: ccd8db4f6d212c8bfa94c26f64de0198
+      size: 2334
     - path: src/postprocess.py
       hash: md5
       md5: 82e7af6c3815fc8ab7eefa2c4c606753
@@ -55,17 +55,17 @@ stages:
     deps:
     - path: models/model_v2.pt
       hash: md5
-      md5: ef3be612e879e97d06819a538b8d8a5e
-      size: 1566
+      md5: ccd8db4f6d212c8bfa94c26f64de0198
+      size: 2334
     - path: src/02_evaluate.py
       hash: md5
-      md5: 9bf160010dc16b67acc8198adcb1b051
-      size: 1207
+      md5: f86b758772c7b36177b9d40c278478b2
+      size: 1187
     outs:
     - path: metrics/evaluation.json
       hash: md5
-      md5: def2164cff43fd10bf1eb8fce79aa6d9
-      size: 30
+      md5: e06453138846ea9eb8626d72e1491ca1
+      size: 36
   prepare_data:
     cmd: python src/00_prepare.py --config src/config.yaml
     deps:
