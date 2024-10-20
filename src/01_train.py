@@ -3,7 +3,7 @@ import torch.nn as nn
 import yaml
 import argparse
 import os
-from models import DummyModelV2  # Ensure that this matches the model class definition
+from models import DummyModelV2  # Ensure this matches the model class
 
 # Argument parsing for config
 parser = argparse.ArgumentParser()
@@ -17,17 +17,14 @@ with open(args.config, 'r') as f:
 # Instantiate and train the model
 model = DummyModelV2()
 
-# Training process (this is a placeholder; replace with actual training code)
-print(f"Training {model.get_version()}")
 # Dummy training step (replace with actual training)
-# Assuming you have a training loop here that updates model weights
 dummy_input = torch.randn(10, 10)  # Placeholder input data
 dummy_output = model(dummy_input)   # Forward pass
 
 # Ensure the models directory exists
 os.makedirs("models", exist_ok=True)
 
-# Save the entire model (not just the state dictionary)
+# Save the **entire model** (architecture + weights)
 torch.save(model, "models/model_v2.pt")
 
 # Save preprocessing and post-processing scripts in the src/ directory
@@ -45,5 +42,4 @@ def postprocess_anomaly_detection(output, config):
     return {"anomaly_score": output.item(), "is_anomalous": output.item() > config['threshold']}
 """)
 
-print(f"{model.get_version()} training completed. Model saved as 'model_v2.pt'.")
-print("Preprocessing and post-processing scripts saved.")
+print(f"Model Version 2.0 training completed. Model saved as 'model_v2.pt'.")
