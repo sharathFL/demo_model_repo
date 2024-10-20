@@ -1,0 +1,76 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/00_prepare.py --config src/config.yaml
+    deps:
+    - path: src/00_prepare.py
+      hash: md5
+      md5: 7f4e5dcc7cdb969f9f918bb77bd63553
+      size: 562
+    - path: src/config.yaml
+      hash: md5
+      md5: 0ceb213b3754d22f3c7789b1c19e43a9
+      size: 117
+    outs:
+    - path: data/processed_data/
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
+  train:
+    cmd: python src/01_train.py --config src/config.yaml
+    deps:
+    - path: data/processed_data/
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
+    - path: src/01_train.py
+      hash: md5
+      md5: be6952e3009cdc0072b7c987ac409188
+      size: 1172
+    - path: src/config.yaml
+      hash: md5
+      md5: 0ceb213b3754d22f3c7789b1c19e43a9
+      size: 117
+    - path: src/models.py
+      hash: md5
+      md5: 76a36765fee853eb4cbd007fd8f05d93
+      size: 217
+    outs:
+    - path: models/model.pt
+      hash: md5
+      md5: 82d8e821f20ce48dd91c6be7232ad37d
+      size: 2316
+    - path: src/postprocess.py
+      hash: md5
+      md5: 82e7af6c3815fc8ab7eefa2c4c606753
+      size: 183
+    - path: src/preprocess.py
+      hash: md5
+      md5: 104fefe461010c3c4279f9d1a40f5512
+      size: 146
+  evaluate:
+    cmd: python src/02_evaluate.py --config src/config.yaml
+    deps:
+    - path: models/model.pt
+      hash: md5
+      md5: 82d8e821f20ce48dd91c6be7232ad37d
+      size: 2316
+    - path: src/02_evaluate.py
+      hash: md5
+      md5: 98bf082482fd0dc9a26c5054050574d1
+      size: 866
+    - path: src/config.yaml
+      hash: md5
+      md5: 0ceb213b3754d22f3c7789b1c19e43a9
+      size: 117
+    - path: src/models.py
+      hash: md5
+      md5: 76a36765fee853eb4cbd007fd8f05d93
+      size: 217
+    outs:
+    - path: metrics/evaluation.json
+      hash: md5
+      md5: 9b7b69fd39b63bbd16884bc0b7148dc6
+      size: 35

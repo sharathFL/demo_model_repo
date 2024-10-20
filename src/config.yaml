@@ -1,0 +1,4 @@
+data_path: "data/raw"
+processed_data_path: "data/processed_data"
+model_output_path: "models/model.pt"
+threshold: 0.7
