@@ -3,7 +3,7 @@ import yaml
 import argparse
 import json
 import os
-from models import DummyModelV2  # Import the model class
+from models import DummyModelV3  # Import the model class
 
 # Argument parsing to take the config file path
 parser = argparse.ArgumentParser()
@@ -15,7 +15,7 @@ with open(args.config, 'r') as f:
     config = yaml.safe_load(f)
 
 # Directly load the entire model (not just the state dictionary)
-model = torch.load("models/model_v2.pt")
+model = torch.load("models/model_C.pt")
 
 # Print model version to confirm which model is being used
 print(f"Evaluating with model version: {model.get_version()}")

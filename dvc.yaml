@@ -15,7 +15,7 @@ stages:
       - data/processed_data/
       - src/config.yaml
     outs:
-      - models/model_v2.pt
+      - models/model_C.pt
       - src/preprocess.py
       - src/postprocess.py
 
@@ -23,6 +23,6 @@ stages:
     cmd: PYTHONPATH=src python src/02_evaluate.py --config src/config.yaml
     deps:
       - src/02_evaluate.py
-      - models/model_v2.pt
+      - models/model_C.pt
     metrics:
       - metrics/evaluation.json
