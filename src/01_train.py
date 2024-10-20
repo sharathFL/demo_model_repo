@@ -27,6 +27,9 @@ os.makedirs("models", exist_ok=True)
 # Save the **entire model** (architecture + weights)
 torch.save(model, "models/model_v2.pt")
 
+# Ensure the src directory exists
+os.makedirs("src", exist_ok=True)
+
 # Save preprocessing and post-processing scripts in the src/ directory
 with open("src/preprocess.py", "w") as f:
     f.write("""
@@ -43,3 +46,4 @@ def postprocess_anomaly_detection(output, config):
 """)
 
 print(f"Model Version 2.0 training completed. Model saved as 'model_v2.pt'.")
+print("Preprocessing and post-processing scripts saved.")
