@@ -35,12 +35,12 @@ stages:
       size: 247
     - path: src/models.py
       hash: md5
-      md5: 611dcb5aa275e49706a44e0465d86191
-      size: 352
+      md5: 7133b8f9d61f6f60b6544867a6b99c5f
+      size: 380
     outs:
     - path: models/model_C.pt
       hash: md5
-      md5: 1d3c5038fbe6678f7bca1dc41712b1ab
+      md5: b2f4eceed4aedbfd36db817c2e5db2b1
       size: 2328
     - path: src/postprocess.py
       hash: md5
@@ -55,7 +55,7 @@ stages:
     deps:
     - path: models/model_C.pt
       hash: md5
-      md5: 1d3c5038fbe6678f7bca1dc41712b1ab
+      md5: b2f4eceed4aedbfd36db817c2e5db2b1
       size: 2328
     - path: src/02_evaluate.py
       hash: md5
