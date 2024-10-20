@@ -1,11 +1,11 @@
 stages:
-  prepare:
+  prepare_data:
     cmd: python src/00_prepare.py --config src/config.yaml
     deps:
       - src/00_prepare.py
       - src/config.yaml
     outs:
-      - data/processed_data/
+      - data/input/dummy_data.npy
 
   train:
     cmd: PYTHONPATH=src python src/01_train.py --config src/config.yaml
@@ -15,7 +15,7 @@ stages:
       - data/processed_data/
       - src/config.yaml
     outs:
-      - models/model_v3.pt  # New model file for version 3.0
+      - models/model_v2.pt
       - src/preprocess.py
       - src/postprocess.py
 
@@ -23,8 +23,6 @@ stages:
     cmd: PYTHONPATH=src python src/02_evaluate.py --config src/config.yaml
     deps:
       - src/02_evaluate.py
-      - src/models.py
-      - models/model_v3.pt  # New model file for version 3.0
-      - src/config.yaml
+      - models/model_v2.pt
     metrics:
       - metrics/evaluation.json

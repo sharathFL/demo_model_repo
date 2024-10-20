@@ -27,50 +27,58 @@ stages:
       nfiles: 0
     - path: src/01_train.py
       hash: md5
-      md5: 793003790e295f83789805183adfc7f3
-      size: 1337
+      md5: 4c49a16a96296781c57effb996a975a0
+      size: 1431
     - path: src/config.yaml
       hash: md5
-      md5: 0ceb213b3754d22f3c7789b1c19e43a9
-      size: 117
+      md5: b3112ce2059d5384f8c4aab21bdd76f4
+      size: 247
     - path: src/models.py
       hash: md5
-      md5: 611dcb5aa275e49706a44e0465d86191
+      md5: 393004fc0fa264f248b21c98404b80a9
       size: 352
     outs:
-    - path: models/model_v3.pt
+    - path: models/model_v2.pt
       hash: md5
-      md5: d765d9efb49c28c08c48e962be13b701
-      size: 2334
+      md5: ef3be612e879e97d06819a538b8d8a5e
+      size: 1566
     - path: src/postprocess.py
       hash: md5
       md5: 82e7af6c3815fc8ab7eefa2c4c606753
       size: 183
     - path: src/preprocess.py
       hash: md5
-      md5: 056265bf8bf8e226f46379262262c4b1
-      size: 150
+      md5: 104fefe461010c3c4279f9d1a40f5512
+      size: 146
   evaluate:
     cmd: PYTHONPATH=src python src/02_evaluate.py --config src/config.yaml
     deps:
-    - path: models/model_v3.pt
+    - path: models/model_v2.pt
       hash: md5
-      md5: d765d9efb49c28c08c48e962be13b701
-      size: 2334
+      md5: ef3be612e879e97d06819a538b8d8a5e
+      size: 1566
     - path: src/02_evaluate.py
       hash: md5
-      md5: e75d2e7096db267175693124757994a8
-      size: 1046
-    - path: src/config.yaml
-      hash: md5
-      md5: 0ceb213b3754d22f3c7789b1c19e43a9
-      size: 117
-    - path: src/models.py
-      hash: md5
-      md5: 611dcb5aa275e49706a44e0465d86191
-      size: 352
+      md5: 9bf160010dc16b67acc8198adcb1b051
+      size: 1207
     outs:
     - path: metrics/evaluation.json
       hash: md5
-      md5: 4d1cac7583a70d6333fef74beb418b95
-      size: 36
+      md5: def2164cff43fd10bf1eb8fce79aa6d9
+      size: 30
+  prepare_data:
+    cmd: python src/00_prepare.py --config src/config.yaml
+    deps:
+    - path: src/00_prepare.py
+      hash: md5
+      md5: aae0f57e68256c55fb45b98d08571153
+      size: 742
+    - path: src/config.yaml
+      hash: md5
+      md5: b3112ce2059d5384f8c4aab21bdd76f4
+      size: 247
+    outs:
+    - path: data/input/dummy_data.npy
+      hash: md5
+      md5: cead828035efd7795bfdae5a846efbd4
+      size: 64128

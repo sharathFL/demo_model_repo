@@ -1,19 +1,24 @@
 import argparse
 import yaml
+import numpy as np
 import os
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--config', required=True)
+# Argument parsing to take the config file path
+parser = argparse.ArgumentParser(description="Prepare data for training")
+parser.add_argument('--config', required=True, help="Path to the configuration file")
 args = parser.parse_args()
 
 # Load the configuration file
-with open(args.config, 'r') as f:
+with open(args.config, "r") as f:
     config = yaml.safe_load(f)
 
-# Simulate data preparation
-os.makedirs("data/processed_data", exist_ok=True)
+# Prepare dummy data
+dummy_data = np.random.rand(16000).astype(np.float32)  # Generate random dummy data
 
-# For example, here you would actually load and process the raw data
-# e.g., cleaning, splitting, and transforming into the format required by the model
+# Ensure the output directory exists
+output_dir = os.path.dirname(config['output'])
+os.makedirs(output_dir, exist_ok=True)
 
-print("Data preparation completed. Processed data saved in 'data/processed_data'.")
+# Save the dummy data
+np.save(config['output'], dummy_data)
+print(f"Dummy data prepared and saved to {config['output']}")

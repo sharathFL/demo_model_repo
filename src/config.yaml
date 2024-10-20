@@ -1,4 +1,9 @@
-data_path: "data/raw"
-processed_data_path: "data/processed_data"
-model_output_path: "models/model.pt"
-threshold: 0.7
+output: "data/input/dummy_data.npy"  # The output path where the prepared data will be saved
+
+# You can add additional configurations here if needed for training or evaluation
+train:
+  epochs: 10
+  learning_rate: 0.001
+
+evaluate:
+  threshold: 0.7
