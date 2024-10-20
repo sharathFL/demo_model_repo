@@ -1,8 +1,9 @@
 import torch
+import torch.nn as nn
 import yaml
 import argparse
 import os
-from models import DummyModelV2  # Ensure the model class is imported from models.py
+from models import DummyModelV2  # Ensure that this matches the model class definition
 
 # Argument parsing for config
 parser = argparse.ArgumentParser()
@@ -16,16 +17,20 @@ with open(args.config, 'r') as f:
 # Instantiate and train the model
 model = DummyModelV2()
 
-# Print model version to confirm which model is being used
+# Training process (this is a placeholder; replace with actual training code)
 print(f"Training {model.get_version()}")
+# Dummy training step (replace with actual training)
+# Assuming you have a training loop here that updates model weights
+dummy_input = torch.randn(10, 10)  # Placeholder input data
+dummy_output = model(dummy_input)   # Forward pass
 
 # Ensure the models directory exists
 os.makedirs("models", exist_ok=True)
 
-# Save only the model's state dictionary (weights)
-torch.save(model.state_dict(), "models/model_v2.pt")
+# Save the entire model (not just the state dictionary)
+torch.save(model, "models/model_v2.pt")
 
-# Save the preprocessing script in the src/ directory
+# Save preprocessing and post-processing scripts in the src/ directory
 with open("src/preprocess.py", "w") as f:
     f.write("""
 def preprocess_audio_data(input_path):
@@ -33,7 +38,6 @@ def preprocess_audio_data(input_path):
     return [0] * 16000  # Dummy data simulating audio input
 """)
 
-# Save the post-processing script in the src/ directory
 with open("src/postprocess.py", "w") as f:
     f.write("""
 def postprocess_anomaly_detection(output, config):
@@ -41,5 +45,5 @@ def postprocess_anomaly_detection(output, config):
     return {"anomaly_score": output.item(), "is_anomalous": output.item() > config['threshold']}
 """)
 
-print(f"{model.get_version()} training completed. Model state saved as 'models/model_v2.pt'.")
+print(f"{model.get_version()} training completed. Model saved as 'model_v2.pt'.")
 print("Preprocessing and post-processing scripts saved.")
