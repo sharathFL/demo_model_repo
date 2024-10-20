@@ -23,7 +23,7 @@ print(f"Training {model.get_version()}")
 os.makedirs("models", exist_ok=True)
 
 # Save the trained model to the models directory
-torch.save(model, "models/model_v2.pt")
+torch.save(model, "models/model_A.pt")
 
 # Save the preprocessing and post-processing scripts
 with open("src/preprocess.py", "w") as f:

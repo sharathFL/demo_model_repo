@@ -15,7 +15,7 @@ with open(args.config, 'r') as f:
     config = yaml.safe_load(f)
 
 # Load the trained model
-model = torch.load("models/model_v2.pt")
+model = torch.load("models/model_A.pt")
 
 # Print model version to confirm which model is being evaluated
 print(f"Evaluating {model.get_version()}")
