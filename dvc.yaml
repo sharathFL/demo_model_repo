@@ -15,7 +15,7 @@ stages:
       - data/processed_data/
       - src/config.yaml
     outs:
-      - models/model_v2.pt  # Update the output to model_v2.pt
+      - models/model_v3.pt  # New model file for version 3.0
       - src/preprocess.py
       - src/postprocess.py
 
@@ -24,7 +24,7 @@ stages:
     deps:
       - src/02_evaluate.py
       - src/models.py
-      - models/model_v2.pt  # Update to model_v2.pt for evaluation
+      - models/model_v3.pt  # New model file for version 3.0
       - src/config.yaml
     metrics:
       - metrics/evaluation.json

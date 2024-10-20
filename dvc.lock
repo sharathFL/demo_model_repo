@@ -27,20 +27,20 @@ stages:
       nfiles: 0
     - path: src/01_train.py
       hash: md5
-      md5: 70d2ed3116ba2118e26ed9f7cbb17f04
-      size: 1300
+      md5: 793003790e295f83789805183adfc7f3
+      size: 1337
     - path: src/config.yaml
       hash: md5
       md5: 0ceb213b3754d22f3c7789b1c19e43a9
       size: 117
     - path: src/models.py
       hash: md5
-      md5: fb823406fcda0a387aeb9db8d52f1399
-      size: 347
+      md5: 611dcb5aa275e49706a44e0465d86191
+      size: 352
     outs:
-    - path: models/model_v2.pt
+    - path: models/model_v3.pt
       hash: md5
-      md5: 275fe642b13eb6055e9b0cf2bcf531b7
+      md5: d765d9efb49c28c08c48e962be13b701
       size: 2334
     - path: src/postprocess.py
       hash: md5
@@ -53,24 +53,24 @@ stages:
   evaluate:
     cmd: PYTHONPATH=src python src/02_evaluate.py --config src/config.yaml
     deps:
-    - path: models/model_v2.pt
+    - path: models/model_v3.pt
       hash: md5
-      md5: 275fe642b13eb6055e9b0cf2bcf531b7
+      md5: d765d9efb49c28c08c48e962be13b701
       size: 2334
     - path: src/02_evaluate.py
       hash: md5
-      md5: 012e24d18bde95bae5845af92f869757
-      size: 1024
+      md5: e75d2e7096db267175693124757994a8
+      size: 1046
     - path: src/config.yaml
       hash: md5
       md5: 0ceb213b3754d22f3c7789b1c19e43a9
       size: 117
     - path: src/models.py
       hash: md5
-      md5: fb823406fcda0a387aeb9db8d52f1399
-      size: 347
+      md5: 611dcb5aa275e49706a44e0465d86191
+      size: 352
     outs:
     - path: metrics/evaluation.json
       hash: md5
-      md5: d6a891ee1235ac2567d297bc438fe807
+      md5: 4d1cac7583a70d6333fef74beb418b95
       size: 36

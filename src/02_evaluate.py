@@ -3,7 +3,7 @@ import argparse
 import torch
 import os
 import json
-from models import DummyModelV2  # Import the new model class
+from models import DummyModelV3  # Import the new model class
 
 # Argument parsing for config
 parser = argparse.ArgumentParser()
@@ -15,15 +15,15 @@ with open(args.config, 'r') as f:
     config = yaml.safe_load(f)
 
 # Load the trained model
-model = torch.load("models/model_v2.pt")
+model = torch.load("models/model_v3.pt")  # Load the new model
 
 # Print model version to confirm which model is being evaluated
 print(f"Evaluating {model.get_version()}")
 
 # Simulate evaluation (in practice, you'd evaluate the model on validation/test data)
 metrics = {
-    "accuracy": 0.96,  # Updated dummy metric for the new model
-    "f1_score": 0.92   # Updated dummy metric for the new model
+    "accuracy": 0.97,  # Updated dummy metric for the new model
+    "f1_score": 0.93   # Updated dummy metric for the new model
 }
 
 # Ensure the metrics directory exists

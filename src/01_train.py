@@ -2,7 +2,7 @@ import torch
 import yaml
 import argparse
 import os
-from models import DummyModelV2  # Import the new model class
+from models import DummyModelV3  # Import the new model class
 
 # Argument parsing for config
 parser = argparse.ArgumentParser()
@@ -14,7 +14,7 @@ with open(args.config, 'r') as f:
     config = yaml.safe_load(f)
 
 # Instantiate and train the new model
-model = DummyModelV2()
+model = DummyModelV3()
 
 # Print model version to confirm which model is being used
 print(f"Training {model.get_version()}")
@@ -23,7 +23,7 @@ print(f"Training {model.get_version()}")
 os.makedirs("models", exist_ok=True)
 
 # Save the trained model to the models directory
-torch.save(model, "models/model_v2.pt")
+torch.save(model, "models/model_v3.pt")  # Save the new model as model_v3.pt
 
 # Save the preprocessing and post-processing scripts
 with open("src/preprocess.py", "w") as f:
